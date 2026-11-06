@@ -1,6 +1,39 @@
 package com.example.pertemuan8.view.uicontroller
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.*
+import androidx.navigation.compose.*
+import androidx.compose.material3.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import com.example.pertemuan8.R
+import com.example.pertemuan8.model.DataJK
+import com.example.pertemuan8.view.FormSiswa
+import com.example.pertemuan8.view.TampilSiswa
+import com.example.pertemuan8.viewmodel.SiswaViewModel
+
 enum class Navigasi {
     Formulir,
     Detail
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SiswaApp(
+    modifier: Modifier,
+    viewModel: SiswaViewModel = viewModel(),
+    navController: NavHostController = rememberNavController()
+) {
+    Scaffold { isiRuang ->
+        val uiState = viewModel.statusUI.collectAsState()
+        NavHost(
+            navController = navController,
+            startDestination = Navigasi.Formulir.name,
+            modifier = Modifier.padding(isiRuang)
+        ) {
+
+        }
+    }
 }
